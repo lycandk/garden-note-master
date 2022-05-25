@@ -36,6 +36,7 @@ public class LoginController {
         Subject subject = SecurityUtils.getSubject();
 
         UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(userName,requestUser.getPassword());
+        usernamePasswordToken.setRememberMe(true);
         try{
             subject.login(usernamePasswordToken);
 //            User user = userService.get(userName,requestUser.getPassword());
@@ -63,5 +64,11 @@ public class LoginController {
         subject.logout();
         String message = "成功登出";
         return ResultFactory.buildSuccessResult(message);
+    }
+
+    @ResponseBody
+    @GetMapping(value = "api/authentication")
+    public String authentication(){
+        return "身份认证成功";
     }
 }
