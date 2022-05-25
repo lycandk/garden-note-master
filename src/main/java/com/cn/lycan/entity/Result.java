@@ -6,7 +6,7 @@ import lombok.Data;
  * @author Makkapakka
  * @date 2022-5-13
  * @package_name com.cn.lycan.entity
- * @description
+ * @description 结果返回封装，实际上应设置成枚举类
  */
 @Data
 public class Result {

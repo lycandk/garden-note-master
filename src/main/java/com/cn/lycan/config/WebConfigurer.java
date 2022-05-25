@@ -1,6 +1,6 @@
 package com.cn.lycan.config;
 
-import com.cn.lycan.interceptor.LoginInterceptor;
+//import com.cn.lycan.interceptor.LoginInterceptor;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -18,10 +18,28 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @SpringBootConfiguration
 public class WebConfigurer implements WebMvcConfigurer {
 
-    @Bean
-    public LoginInterceptor getLoginInterceptor(){
-        return new LoginInterceptor();
-    }
+    /**
+     * 获得登录拦截器
+     * @return
+     */
+//    @Bean
+//    public LoginInterceptor getLoginInterceptor(){
+//        return new LoginInterceptor();
+//    }
+
+//    /**
+//     * 注册登录拦截器
+//     * @param interceptorRegistry
+//     * 除了logout,login,index对所有路径进行拦截
+//     */
+//    @Override
+//    public void addInterceptors(InterceptorRegistry interceptorRegistry){
+//        interceptorRegistry.addInterceptor(getLoginInterceptor())
+//                .addPathPatterns("/**")
+//                .excludePathPatterns("/index.html")
+//                .excludePathPatterns("/api/login")
+//                .excludePathPatterns("/api/logout");
+//    }
 
     @Override
     public void addCorsMappings(CorsRegistry corsRegistry){
@@ -29,15 +47,6 @@ public class WebConfigurer implements WebMvcConfigurer {
                 .allowedOrigins("*")
                 .allowedMethods("*")
                 .allowedHeaders("*");
-    }
-
-    @Override
-    public void addInterceptors(InterceptorRegistry interceptorRegistry){
-        interceptorRegistry.addInterceptor(getLoginInterceptor())
-                .addPathPatterns("/**")
-                .excludePathPatterns("/index.html")
-                .excludePathPatterns("/api/login")
-                .excludePathPatterns("/api/logout");
     }
 
     @Override

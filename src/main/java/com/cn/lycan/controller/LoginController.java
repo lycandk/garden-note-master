@@ -28,7 +28,7 @@ public class LoginController {
     UserService userService;
 
     @PostMapping(value = "/api/login")
-    public Result login(@RequestBody User requestUser, HttpSession httpSession) {
+    public Result login(@RequestBody User requestUser) {
 
         // 对 html 标签进行转义，防止 XSS 攻击
         String userName = requestUser.getUsername();
@@ -38,7 +38,8 @@ public class LoginController {
         UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(userName,requestUser.getPassword());
         try{
             subject.login(usernamePasswordToken);
-            User user = userService.get(userName,requestUser.getPassword());
+//            User user = userService.get(userName,requestUser.getPassword());
+//            httpSession.setAttribute("user",user);
             return ResultFactory.buildSuccessResult(userName);
         }catch (AuthenticationException e){
             String message = "账号密码错误";

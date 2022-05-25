@@ -16,8 +16,10 @@ import org.springframework.stereotype.Component;
 @Component
 @Mapper
 public interface UserMapper {
+    /**通过用户名查询*/
     @Select("SELECT * FROM user WHERE username = #{userName}")
     public User findByUserName(String userName);
+    /**通过用户名及密码查询*/
     @Select("SELECT * FROM user WHERE username = #{username} AND password = #{password}")
     public User getByUserNameAndPassword(@Param("username") String userName, @Param("password") String  passWord);
 

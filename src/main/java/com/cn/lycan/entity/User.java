@@ -1,6 +1,7 @@
 package com.cn.lycan.entity;
 
 import lombok.Data;
+import lombok.ToString;
 
 /**
  * @author Makkapakka
@@ -9,6 +10,7 @@ import lombok.Data;
  * @description
  */
 @Data
+@ToString
 public class User {
     int id;
     String username;
